@@ -52,7 +52,7 @@
     <!-- 頂部導航列 -->
     <header class="bg-white shadow-sm sticky top-0 z-10">
         <div class="max-w-5xl mx-auto px-4 py-4 flex justify-between items-center">
-            <h1 class="text-2xl font-bold text-blue-600"><i class="fa-solid fa-wand-magic-sparkles mr-2"></i>AI 虛擬試身室 <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full ml-2">PRO</span></h1>
+            <h1 class="text-2xl font-bold text-blue-600"><i class="fa-solid fa-wand-magic-sparkles mr-2"></i>AI 虛擬試身室 <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full ml-2">PRO MAX</span></h1>
             <button onclick="resetApp()" class="text-sm text-gray-500 hover:text-blue-600 font-medium">
                 <i class="fa-solid fa-rotate-right mr-1"></i>重設
             </button>
@@ -63,7 +63,8 @@
     <main class="max-w-5xl mx-auto px-4 py-8">
         <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
             <div class="p-6 md:p-8">
-                <p class="text-gray-600 mb-8 text-center">上傳一張你嘅正面相，再上傳一張你想試嘅衣服相，AI 將會為你進行真實感換裝合成！</p>
+                <p class="text-gray-600 mb-2 text-center text-lg">上傳一張你嘅正面相，再上傳一張想試嘅衣服相。</p>
+                <p class="text-blue-500 mb-8 text-center text-sm font-medium"><i class="fa-solid fa-circle-info mr-1"></i> 全新升級：AI 會根據你的身形與姿勢進行<b>深度重繪與融合</b>，呈現真實穿著效果，絕非簡單貼圖！</p>
 
                 <!-- 圖片上傳區域 -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
@@ -77,7 +78,7 @@
                             <div id="personPlaceholder" class="text-center p-4">
                                 <i class="fa-solid fa-cloud-arrow-up text-4xl text-gray-400 mb-3"></i>
                                 <p class="text-gray-500 text-sm">點擊上傳或拖曳圖片至此</p>
-                                <p class="text-xs text-gray-400 mt-1">建議使用清晰全身/半身正面照</p>
+                                <p class="text-xs text-gray-400 mt-1">建議：光線充足、無物件遮擋身體</p>
                             </div>
                             
                             <img id="personPreview" class="hidden absolute inset-0 w-full h-full object-contain bg-gray-100" alt="人物預覽">
@@ -93,7 +94,7 @@
                             <div id="clothingPlaceholder" class="text-center p-4">
                                 <i class="fa-solid fa-cloud-arrow-up text-4xl text-gray-400 mb-3"></i>
                                 <p class="text-gray-500 text-sm">點擊上傳衣服圖片</p>
-                                <p class="text-xs text-gray-400 mt-1">建議使用背景乾淨的平鋪衣服照</p>
+                                <p class="text-xs text-gray-400 mt-1">建議：背景乾淨的平鋪衣服照</p>
                             </div>
                             
                             <img id="clothingPreview" class="hidden absolute inset-0 w-full h-full object-contain bg-gray-100" alt="衣服預覽">
@@ -104,14 +105,14 @@
                 <!-- 生成按鈕 -->
                 <div class="flex flex-col items-center justify-center mb-8">
                     <button id="generateBtn" onclick="generateTryOn()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-10 rounded-full shadow-lg transform transition hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none text-lg w-full max-w-sm">
-                        <i class="fa-solid fa-wand-magic-sparkles mr-2"></i>開始 AI 深度換裝
+                        <i class="fa-solid fa-wand-magic-sparkles mr-2"></i>開始精準 AI 換裝
                     </button>
                     <p id="errorMsg" class="text-red-500 text-sm mt-3 hidden"></p>
                 </div>
 
                 <!-- 結果顯示區 -->
                 <div id="resultSection" class="hidden flex-col items-center border-t border-gray-100 pt-8 mt-4">
-                    <h2 class="text-xl font-bold text-gray-800 mb-4">✨ AI 生成結果 ✨</h2>
+                    <h2 class="text-xl font-bold text-gray-800 mb-4">✨ AI 真實換裝結果 ✨</h2>
                     
                     <!-- 載入中動畫 -->
                     <div id="loadingState" class="hidden flex-col items-center py-10 w-full max-w-md">
@@ -121,11 +122,11 @@
                                 <img id="loadingPersonImg" class="w-1/2 h-full object-contain opacity-50">
                                 <img id="loadingClothingImg" class="w-1/2 h-full object-contain opacity-50">
                             </div>
-                            <div class="absolute inset-0 bg-white bg-opacity-60 backdrop-blur-sm"></div>
+                            <div class="absolute inset-0 bg-white bg-opacity-70 backdrop-blur-md"></div>
                             <div class="z-10 flex flex-col items-center">
                                 <div class="loader mb-4"></div>
-                                <p class="text-blue-600 font-bold text-lg">AI 模型運算中...</p>
-                                <p id="loadingText" class="text-sm text-gray-600 mt-2 font-medium">正在分析身形與布料材質</p>
+                                <p class="text-blue-700 font-bold text-lg">正在深度運算及重繪...</p>
+                                <p id="loadingText" class="text-sm text-gray-700 mt-2 font-medium bg-white px-3 py-1 rounded-full shadow-sm">正在計算布料垂墜感與光影</p>
                             </div>
                             <div class="scanning-bar"></div>
                         </div>
@@ -174,11 +175,11 @@
 
         // 動態載入文字效果
         const loadingTexts = [
-            "正在提取衣物特徵...",
-            "正在識別人物姿勢與身型...",
-            "AI 正在融合光影與材質...",
-            "進行最終細節修飾...",
-            "即將完成，請稍候..."
+            "正在進行骨架與身形定位...",
+            "嚴格禁止簡單貼圖，正在進行深度融合...",
+            "AI 正在根據姿勢重繪布料摺痕...",
+            "統一環境光線與陰影細節...",
+            "最後渲染中，確保影像真實自然..."
         ];
 
         // 呼叫 Gemini AI 圖像生成模型
@@ -191,13 +192,22 @@
             const clothingBase64 = clothingDataUrl.split(',')[1];
             const clothingMime = clothingDataUrl.split(';')[0].split(':')[1];
 
-            // 構建提示詞 (Prompt) 畀 AI
-            const prompt = `This is a virtual try-on task. 
-            Image 1 is a person. 
-            Image 2 is a piece of clothing. 
-            Generate a highly realistic image of the person in Image 1 wearing the exact clothing shown in Image 2. 
-            Ensure the clothing naturally fits the person's body shape and pose. 
-            Strictly maintain the person's original identity, face, hairstyle, body pose, and the original background. Do not just overlay the image, make it look like a real photograph.`;
+            // 【核心修改】嚴格且詳細的 Prompt，強制要求重繪而非疊加
+            const prompt = `[CRITICAL INSTRUCTION]
+            Task: High-Fidelity Photorealistic Virtual Try-On.
+            You are provided with two images: 
+            1. A photograph of a person. 
+            2. A photograph of a piece of clothing.
+
+            Your ONLY goal is to generate a pristine, highly realistic, unified photograph of the EXACT person from Image 1 naturally wearing the EXACT garment from Image 2.
+
+            STRICT RULES TO FOLLOW:
+            - DO NOT copy and paste. 
+            - DO NOT just overlay or superimpose Image 2 onto Image 1. 
+            - You MUST completely REDRAW the clothing onto the person's body so that the fabric naturally folds, drapes, and stretches according to their actual body shape and pose.
+            - The lighting, shadows, and color temperature of the new clothing MUST perfectly match the environment and lighting of Image 1.
+            - You MUST perfectly preserve the person's face, skin tone, hairstyle, original identity, body proportions, and the original background without any distortion.
+            - The final output must look exactly like an authentic photograph taken with a camera, with zero signs of editing, collage, or awkward overlapping.`;
 
             const payload = {
                 contents: [{
@@ -271,7 +281,7 @@
 
             // 設定 UI 進入載入狀態
             btn.disabled = true;
-            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin mr-2"></i>AI 處理中...';
+            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin mr-2"></i>深度融合運算中...';
             
             // 顯示動畫預覽圖
             document.getElementById('loadingPersonImg').src = personImg;
@@ -309,7 +319,7 @@
             } catch (error) {
                 // 處理錯誤
                 console.error("生成失敗:", error);
-                errorMsg.innerText = `生成失敗: ${error.message} (可能原因：AI 系統繁忙或圖片格式不支援)`;
+                errorMsg.innerText = `生成失敗: ${error.message} (可能原因：圖片過於複雜，請嘗試另一張照片)`;
                 errorMsg.classList.remove('hidden');
                 
                 resultSection.classList.add('hidden');
@@ -328,7 +338,7 @@
             if (!img.src || img.src === window.location.href) return;
             
             const link = document.createElement('a');
-            link.download = `ai-tryon-${new Date().getTime()}.png`;
+            link.download = `ai-tryon-pro-${new Date().getTime()}.png`;
             link.href = img.src;
             link.click();
         }
@@ -352,7 +362,7 @@
             
             const btn = document.getElementById('generateBtn');
             btn.disabled = false;
-            btn.innerHTML = '<i class="fa-solid fa-wand-magic-sparkles mr-2"></i>開始 AI 深度換裝';
+            btn.innerHTML = '<i class="fa-solid fa-wand-magic-sparkles mr-2"></i>開始精準 AI 換裝';
             
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
