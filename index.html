@@ -29,6 +29,22 @@
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
+        /* 生成時的掃描動畫 */
+        .scanning-bar {
+            width: 100%;
+            height: 4px;
+            background: rgba(59, 130, 246, 0.8);
+            position: absolute;
+            top: 0;
+            left: 0;
+            animation: scan 2s ease-in-out infinite alternate;
+            box-shadow: 0 0 10px rgba(59, 130, 246, 0.8);
+            z-index: 10;
+        }
+        @keyframes scan {
+            0% { top: 0%; }
+            100% { top: 100%; }
+        }
     </style>
 </head>
 <body class="bg-gray-50 min-h-screen text-gray-800">
@@ -36,7 +52,7 @@
     <!-- 頂部導航列 -->
     <header class="bg-white shadow-sm sticky top-0 z-10">
         <div class="max-w-5xl mx-auto px-4 py-4 flex justify-between items-center">
-            <h1 class="text-2xl font-bold text-blue-600"><i class="fa-solid fa-wand-magic-sparkles mr-2"></i>AI 虛擬試身室</h1>
+            <h1 class="text-2xl font-bold text-blue-600"><i class="fa-solid fa-wand-magic-sparkles mr-2"></i>AI 虛擬試身室 <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full ml-2">PRO</span></h1>
             <button onclick="resetApp()" class="text-sm text-gray-500 hover:text-blue-600 font-medium">
                 <i class="fa-solid fa-rotate-right mr-1"></i>重設
             </button>
@@ -47,7 +63,7 @@
     <main class="max-w-5xl mx-auto px-4 py-8">
         <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
             <div class="p-6 md:p-8">
-                <p class="text-gray-600 mb-8 text-center">上傳一張你嘅正面相，再上傳一張你想試嘅衣服相，AI 就會幫你自動換裝！</p>
+                <p class="text-gray-600 mb-8 text-center">上傳一張你嘅正面相，再上傳一張你想試嘅衣服相，AI 將會為你進行真實感換裝合成！</p>
 
                 <!-- 圖片上傳區域 -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
@@ -55,72 +71,78 @@
                     <!-- 人物照片上傳 -->
                     <div class="flex flex-col">
                         <label class="font-semibold text-gray-700 mb-2"><i class="fa-solid fa-user mr-2 text-blue-500"></i>1. 上傳人物照片</label>
-                        <div class="upload-zone rounded-xl h-64 flex flex-col items-center justify-center relative cursor-pointer" onclick="document.getElementById('personInput').click()">
+                        <div class="upload-zone rounded-xl h-64 flex flex-col items-center justify-center relative cursor-pointer overflow-hidden" onclick="document.getElementById('personInput').click()">
                             <input type="file" id="personInput" class="hidden" accept="image/*" onchange="previewImage(event, 'personPreview', 'personPlaceholder')">
                             
                             <div id="personPlaceholder" class="text-center p-4">
                                 <i class="fa-solid fa-cloud-arrow-up text-4xl text-gray-400 mb-3"></i>
                                 <p class="text-gray-500 text-sm">點擊上傳或拖曳圖片至此</p>
-                                <p class="text-xs text-gray-400 mt-1">建議使用清晰正面照</p>
+                                <p class="text-xs text-gray-400 mt-1">建議使用清晰全身/半身正面照</p>
                             </div>
                             
-                            <img id="personPreview" class="hidden absolute inset-0 w-full h-full object-cover rounded-xl" alt="人物預覽">
+                            <img id="personPreview" class="hidden absolute inset-0 w-full h-full object-contain bg-gray-100" alt="人物預覽">
                         </div>
                     </div>
 
                     <!-- 衣服照片上傳 -->
                     <div class="flex flex-col">
                         <label class="font-semibold text-gray-700 mb-2"><i class="fa-solid fa-shirt mr-2 text-blue-500"></i>2. 上傳衣服照片</label>
-                        <div class="upload-zone rounded-xl h-64 flex flex-col items-center justify-center relative cursor-pointer" onclick="document.getElementById('clothingInput').click()">
+                        <div class="upload-zone rounded-xl h-64 flex flex-col items-center justify-center relative cursor-pointer overflow-hidden" onclick="document.getElementById('clothingInput').click()">
                             <input type="file" id="clothingInput" class="hidden" accept="image/*" onchange="previewImage(event, 'clothingPreview', 'clothingPlaceholder')">
                             
                             <div id="clothingPlaceholder" class="text-center p-4">
                                 <i class="fa-solid fa-cloud-arrow-up text-4xl text-gray-400 mb-3"></i>
                                 <p class="text-gray-500 text-sm">點擊上傳衣服圖片</p>
-                                <p class="text-xs text-gray-400 mt-1">建議使用平鋪衣服照</p>
+                                <p class="text-xs text-gray-400 mt-1">建議使用背景乾淨的平鋪衣服照</p>
                             </div>
                             
-                            <img id="clothingPreview" class="hidden absolute inset-0 w-full h-full object-contain bg-gray-100 rounded-xl" alt="衣服預覽">
+                            <img id="clothingPreview" class="hidden absolute inset-0 w-full h-full object-contain bg-gray-100" alt="衣服預覽">
                         </div>
                     </div>
                 </div>
 
                 <!-- 生成按鈕 -->
-                <div class="flex justify-center mb-8">
-                    <button id="generateBtn" onclick="generateTryOn()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-10 rounded-full shadow-lg transform transition hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed text-lg">
-                        <i class="fa-solid fa-wand-magic mr-2"></i>立即 AI 換裝
+                <div class="flex flex-col items-center justify-center mb-8">
+                    <button id="generateBtn" onclick="generateTryOn()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-10 rounded-full shadow-lg transform transition hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none text-lg w-full max-w-sm">
+                        <i class="fa-solid fa-wand-magic-sparkles mr-2"></i>開始 AI 深度換裝
                     </button>
+                    <p id="errorMsg" class="text-red-500 text-sm mt-3 hidden"></p>
                 </div>
 
                 <!-- 結果顯示區 -->
                 <div id="resultSection" class="hidden flex-col items-center border-t border-gray-100 pt-8 mt-4">
-                    <h2 class="text-xl font-bold text-gray-800 mb-4">✨ 生成結果 ✨</h2>
+                    <h2 class="text-xl font-bold text-gray-800 mb-4">✨ AI 生成結果 ✨</h2>
                     
                     <!-- 載入中動畫 -->
-                    <div id="loadingState" class="hidden flex-col items-center py-10">
-                        <div class="loader mb-4"></div>
-                        <p class="text-blue-600 font-medium">AI 正在為你進行精準換裝，請稍候...</p>
-                        <p class="text-xs text-gray-400 mt-2">（模擬進度：分析身型 ➔ 提取衣物 ➔ 融合光影）</p>
+                    <div id="loadingState" class="hidden flex-col items-center py-10 w-full max-w-md">
+                        <div class="relative w-full h-64 bg-gray-100 rounded-xl overflow-hidden flex items-center justify-center mb-6 border border-gray-200">
+                            <!-- 疊加預覽以顯示 AI 正在處理 -->
+                            <div class="absolute inset-0 flex">
+                                <img id="loadingPersonImg" class="w-1/2 h-full object-contain opacity-50">
+                                <img id="loadingClothingImg" class="w-1/2 h-full object-contain opacity-50">
+                            </div>
+                            <div class="absolute inset-0 bg-white bg-opacity-60 backdrop-blur-sm"></div>
+                            <div class="z-10 flex flex-col items-center">
+                                <div class="loader mb-4"></div>
+                                <p class="text-blue-600 font-bold text-lg">AI 模型運算中...</p>
+                                <p id="loadingText" class="text-sm text-gray-600 mt-2 font-medium">正在分析身形與布料材質</p>
+                            </div>
+                            <div class="scanning-bar"></div>
+                        </div>
                     </div>
 
                     <!-- 最終結果 -->
-                    <div id="finalResult" class="hidden w-full max-w-md">
-                        <div class="relative rounded-xl overflow-hidden shadow-2xl bg-gray-100 h-96 flex items-center justify-center">
-                            <!-- 這裡用 Canvas 模擬合成結果 -->
-                            <canvas id="resultCanvas" class="w-full h-full object-cover"></canvas>
+                    <div id="finalResult" class="hidden w-full max-w-md flex-col items-center">
+                        <div class="relative rounded-xl overflow-hidden shadow-2xl bg-gray-100 w-full aspect-[3/4] flex items-center justify-center border border-gray-200">
+                            <img id="resultImage" class="w-full h-full object-contain" alt="AI 換裝完成圖">
                         </div>
-                        <div class="flex justify-center gap-4 mt-6">
-                            <button onclick="downloadResult()" class="bg-gray-800 hover:bg-gray-900 text-white py-2 px-6 rounded-lg shadow transition">
-                                <i class="fa-solid fa-download mr-2"></i>儲存圖片
+                        <div class="flex justify-center gap-4 mt-6 w-full">
+                            <button onclick="downloadResult()" class="flex-1 bg-gray-800 hover:bg-gray-900 text-white py-3 px-4 rounded-xl shadow transition font-medium flex justify-center items-center">
+                                <i class="fa-solid fa-download mr-2"></i>儲存高畫質圖片
                             </button>
-                            <button onclick="shareResult()" class="border border-gray-300 hover:bg-gray-50 text-gray-700 py-2 px-6 rounded-lg shadow-sm transition">
-                                <i class="fa-solid fa-share-nodes mr-2"></i>分享
+                            <button onclick="shareResult()" class="flex-1 border border-gray-300 hover:bg-gray-50 text-gray-700 py-3 px-4 rounded-xl shadow-sm transition font-medium flex justify-center items-center">
+                                <i class="fa-solid fa-share-nodes mr-2"></i>分享造型
                             </button>
-                        </div>
-                        
-                        <!-- 系統提示 -->
-                        <div class="mt-6 p-4 bg-blue-50 text-blue-800 text-sm rounded-lg border border-blue-100">
-                            <strong>💡 開發者提示：</strong> 這是一個前端 UI 介面。如果要達到完美的商業級 AI 換裝效果，需要將此網頁連接到後端的 AI API（例如 VTON, Replicate 等）。目前的預覽為模擬合成效果！
                         </div>
                     </div>
                 </div>
@@ -130,6 +152,9 @@
     </main>
 
     <script>
+        // 設定 API Key (系統會自動注入環境變數)
+        const apiKey = ""; 
+
         // 處理圖片預覽
         function previewImage(event, previewId, placeholderId) {
             const input = event.target;
@@ -147,15 +172,94 @@
             }
         }
 
-        // 模擬生成過程
-        function generateTryOn() {
+        // 動態載入文字效果
+        const loadingTexts = [
+            "正在提取衣物特徵...",
+            "正在識別人物姿勢與身型...",
+            "AI 正在融合光影與材質...",
+            "進行最終細節修飾...",
+            "即將完成，請稍候..."
+        ];
+
+        // 呼叫 Gemini AI 圖像生成模型
+        async function fetchAIImage(personDataUrl, clothingDataUrl) {
+            const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-image-preview:generateContent?key=${apiKey}`;
+            
+            // 提取 Base64 資料與 MimeType
+            const personBase64 = personDataUrl.split(',')[1];
+            const personMime = personDataUrl.split(';')[0].split(':')[1];
+            const clothingBase64 = clothingDataUrl.split(',')[1];
+            const clothingMime = clothingDataUrl.split(';')[0].split(':')[1];
+
+            // 構建提示詞 (Prompt) 畀 AI
+            const prompt = `This is a virtual try-on task. 
+            Image 1 is a person. 
+            Image 2 is a piece of clothing. 
+            Generate a highly realistic image of the person in Image 1 wearing the exact clothing shown in Image 2. 
+            Ensure the clothing naturally fits the person's body shape and pose. 
+            Strictly maintain the person's original identity, face, hairstyle, body pose, and the original background. Do not just overlay the image, make it look like a real photograph.`;
+
+            const payload = {
+                contents: [{
+                    role: "user",
+                    parts: [
+                        { text: prompt },
+                        { inlineData: { mimeType: personMime, data: personBase64 } },
+                        { inlineData: { mimeType: clothingMime, data: clothingBase64 } }
+                    ]
+                }],
+                generationConfig: {
+                    responseModalities: ["IMAGE"] // 要求輸出為圖片
+                }
+            };
+
+            // 實現錯誤重試機制 (Exponential backoff)
+            const delays = [1000, 2000, 4000, 8000, 16000];
+            for (let attempt = 0; attempt <= delays.length; attempt++) {
+                try {
+                    const response = await fetch(url, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+
+                    if (!response.ok) {
+                        const errorData = await response.json();
+                        throw new Error(errorData.error?.message || `HTTP error! status: ${response.status}`);
+                    }
+
+                    const result = await response.json();
+                    
+                    // 解析回傳的 Base64 圖片數據
+                    const generatedPart = result.candidates?.[0]?.content?.parts?.find(p => p.inlineData);
+                    const base64Image = generatedPart?.inlineData?.data;
+                    const mimeType = generatedPart?.inlineData?.mimeType || 'image/png';
+
+                    if (base64Image) {
+                        return `data:${mimeType};base64,${base64Image}`;
+                    } else {
+                        throw new Error("AI 模型沒有回傳圖片數據，請稍後再試。");
+                    }
+                } catch (error) {
+                    console.warn(`嘗試第 ${attempt + 1} 次失敗:`, error.message);
+                    if (attempt === delays.length) throw error;
+                    await new Promise(resolve => setTimeout(resolve, delays[attempt]));
+                }
+            }
+        }
+
+        // 執行換裝過程
+        async function generateTryOn() {
             const personImg = document.getElementById('personPreview').src;
             const clothingImg = document.getElementById('clothingPreview').src;
+            const errorMsg = document.getElementById('errorMsg');
+
+            errorMsg.classList.add('hidden');
 
             // 檢查是否兩張圖都已上傳
             if (!personImg || personImg === window.location.href || 
                 !clothingImg || clothingImg === window.location.href) {
-                alert("請先上傳人物及衣服照片！");
+                alert("請先上傳「人物照片」同「衣服照片」！");
                 return;
             }
 
@@ -163,73 +267,69 @@
             const resultSection = document.getElementById('resultSection');
             const loadingState = document.getElementById('loadingState');
             const finalResult = document.getElementById('finalResult');
+            const loadingText = document.getElementById('loadingText');
 
-            // 顯示載入狀態
+            // 設定 UI 進入載入狀態
             btn.disabled = true;
-            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin mr-2"></i>處理中...';
+            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin mr-2"></i>AI 處理中...';
+            
+            // 顯示動畫預覽圖
+            document.getElementById('loadingPersonImg').src = personImg;
+            document.getElementById('loadingClothingImg').src = clothingImg;
+
             resultSection.classList.remove('hidden');
             resultSection.classList.add('flex');
             loadingState.classList.remove('hidden');
             loadingState.classList.add('flex');
             finalResult.classList.add('hidden');
+            finalResult.classList.remove('flex');
 
-            // 模擬網絡延遲 (3秒後顯示結果)
-            setTimeout(() => {
+            // 捲動到結果區
+            resultSection.scrollIntoView({ behavior: 'smooth' });
+
+            // 輪播載入文字
+            let textIndex = 0;
+            const textInterval = setInterval(() => {
+                textIndex = (textIndex + 1) % loadingTexts.length;
+                loadingText.innerText = loadingTexts[textIndex];
+            }, 3000);
+
+            try {
+                // 呼叫真實的 AI API
+                const generatedImageDataUrl = await fetchAIImage(personImg, clothingImg);
+
+                // 成功獲取圖片，更新 UI
+                document.getElementById('resultImage').src = generatedImageDataUrl;
+                
                 loadingState.classList.add('hidden');
                 loadingState.classList.remove('flex');
                 finalResult.classList.remove('hidden');
+                finalResult.classList.add('flex');
                 
-                // 恢復按鈕
+            } catch (error) {
+                // 處理錯誤
+                console.error("生成失敗:", error);
+                errorMsg.innerText = `生成失敗: ${error.message} (可能原因：AI 系統繁忙或圖片格式不支援)`;
+                errorMsg.classList.remove('hidden');
+                
+                resultSection.classList.add('hidden');
+                resultSection.classList.remove('flex');
+            } finally {
+                // 清理工作並恢復按鈕狀態
+                clearInterval(textInterval);
                 btn.disabled = false;
-                btn.innerHTML = '<i class="fa-solid fa-wand-magic mr-2"></i>再次換裝';
-
-                // 畫出模擬合成圖
-                drawMockup(personImg, clothingImg);
-
-                // 捲動到結果區
-                resultSection.scrollIntoView({ behavior: 'smooth' });
-            }, 3000);
-        }
-
-        // 簡單的 Canvas 模擬合成 (將衣服疊加在人像上)
-        function drawMockup(personSrc, clothingSrc) {
-            const canvas = document.getElementById('resultCanvas');
-            const ctx = canvas.getContext('2d');
-            
-            const pImg = new Image();
-            const cImg = new Image();
-            
-            pImg.onload = () => {
-                // 設定 canvas 大小與人物照片相同
-                canvas.width = pImg.width;
-                canvas.height = pImg.height;
-                
-                // 畫上人物
-                ctx.drawImage(pImg, 0, 0, canvas.width, canvas.height);
-                
-                cImg.onload = () => {
-                    // 模擬把衣服放在中間 (這只是一個非常簡化的視覺模擬)
-                    const cWidth = canvas.width * 0.6; // 衣服佔據寬度比例
-                    const cHeight = cImg.height * (cWidth / cImg.width);
-                    const x = (canvas.width - cWidth) / 2;
-                    const y = canvas.height * 0.25; // 大約放在胸前位置
-                    
-                    // 加上一點透明度讓它看起來像合成
-                    ctx.globalAlpha = 0.9;
-                    ctx.drawImage(cImg, x, y, cWidth, cHeight);
-                    ctx.globalAlpha = 1.0;
-                };
-                cImg.src = clothingSrc;
-            };
-            pImg.src = personSrc;
+                btn.innerHTML = '<i class="fa-solid fa-wand-magic-sparkles mr-2"></i>重新生成';
+            }
         }
 
         // 下載圖片
         function downloadResult() {
-            const canvas = document.getElementById('resultCanvas');
+            const img = document.getElementById('resultImage');
+            if (!img.src || img.src === window.location.href) return;
+            
             const link = document.createElement('a');
-            link.download = 'ai-tryon-result.png';
-            link.href = canvas.toDataURL('image/png');
+            link.download = `ai-tryon-${new Date().getTime()}.png`;
+            link.href = img.src;
             link.click();
         }
 
@@ -248,24 +348,26 @@
             
             document.getElementById('resultSection').classList.add('hidden');
             document.getElementById('resultSection').classList.remove('flex');
+            document.getElementById('errorMsg').classList.add('hidden');
             
             const btn = document.getElementById('generateBtn');
             btn.disabled = false;
-            btn.innerHTML = '<i class="fa-solid fa-wand-magic mr-2"></i>立即 AI 換裝';
+            btn.innerHTML = '<i class="fa-solid fa-wand-magic-sparkles mr-2"></i>開始 AI 深度換裝';
             
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         // 簡單分享功能
         function shareResult() {
-            if (navigator.share) {
+            const img = document.getElementById('resultImage');
+            if (navigator.share && img.src) {
                 navigator.share({
                     title: '我的 AI 換裝結果',
-                    text: '快啲嚟睇下我用 AI 虛擬試身室整嘅新造型！',
+                    text: '快啲嚟睇下我用 AI 虛擬試身室整嘅真實新造型！',
                     url: window.location.href,
                 }).catch(console.error);
             } else {
-                alert('你嘅瀏覽器唔支援分享功能，請直接下載圖片分享啦！');
+                alert('你嘅瀏覽器唔支援自動分享，請直接撳「儲存圖片」分享啦！');
             }
         }
     </script>
