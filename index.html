@@ -1,310 +1,273 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="zh-HK">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2685.1">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.0px Menlo; color: #6d6d6d; -webkit-text-stroke: #6d6d6d}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.0px Menlo; color: #0000ff; -webkit-text-stroke: #0000ff}
-    p.p3 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.0px Menlo; color: #6b0001; -webkit-text-stroke: #6b0001}
-    p.p4 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.0px Menlo; color: #fb0007; -webkit-text-stroke: #fb0007}
-    p.p5 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.0px Menlo; -webkit-text-stroke: #000000}
-    p.p6 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.0px Menlo; color: #4d5055; -webkit-text-stroke: #4d5055}
-    p.p7 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.0px Menlo; color: #093c94; -webkit-text-stroke: #093c94}
-    p.p8 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.0px Menlo; -webkit-text-stroke: #000000; min-height: 16.0px}
-    p.p9 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.0px Menlo; color: #18702b; -webkit-text-stroke: #18702b}
-    span.s1 {font-kerning: none; background-color: #ecf1f7}
-    span.s2 {font-kerning: none; color: #fb0007; background-color: #ecf1f7; -webkit-text-stroke: 0px #fb0007}
-    span.s3 {font-kerning: none; color: #2a2a2a; background-color: #ecf1f7; -webkit-text-stroke: 0px #2a2a2a}
-    span.s4 {font-kerning: none; color: #6b0001; background-color: #ecf1f7; -webkit-text-stroke: 0px #6b0001}
-    span.s5 {font-kerning: none; color: #000000; background-color: #ecf1f7; -webkit-text-stroke: 0px #000000}
-    span.s6 {font-kerning: none; color: #0000ff; background-color: #ecf1f7; -webkit-text-stroke: 0px #0000ff}
-    span.s7 {font-kerning: none; color: #137646; background-color: #ecf1f7; -webkit-text-stroke: 0px #137646}
-    span.s8 {font-kerning: none; color: #093c94; background-color: #ecf1f7; -webkit-text-stroke: 0px #093c94}
-    span.s9 {font-kerning: none; color: #6f0ec3; background-color: #ecf1f7; -webkit-text-stroke: 0px #6f0ec3}
-    span.s10 {font-kerning: none}
-    span.s11 {font-kerning: none; color: #4d5055; background-color: #ecf1f7; -webkit-text-stroke: 0px #4d5055}
-    span.s12 {font-kerning: none; color: #a4450b; background-color: #ecf1f7; -webkit-text-stroke: 0px #a4450b}
-    span.s13 {font-kerning: none; color: #0e6e6d; background-color: #ecf1f7; -webkit-text-stroke: 0px #0e6e6d}
-    span.s14 {font-kerning: none; color: #18702b; background-color: #ecf1f7; -webkit-text-stroke: 0px #18702b}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 虛擬試身室</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* 自訂上傳區塊的虛線樣式 */
+        .upload-zone {
+            border: 2px dashed #cbd5e1;
+            transition: all 0.3s ease;
+        }
+        .upload-zone:hover {
+            border-color: #3b82f6;
+            background-color: #eff6ff;
+        }
+        .loader {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #3b82f6;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
 </head>
-<body>
-<p class="p1"><span class="s1">&lt;!DOCTYPE</span><span class="s2"> html</span><span class="s1">&gt;</span></p>
-<p class="p2"><span class="s3">&lt;</span><span class="s4">html</span><span class="s5"> </span><span class="s2">lang</span><span class="s3">=</span><span class="s1">"zh-HK"</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s3">&lt;</span><span class="s1">head</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;</span><span class="s4">meta</span><span class="s5"> </span><span class="s1">charset</span><span class="s3">=</span><span class="s6">"UTF-8"</span><span class="s3">&gt;</span></p>
-<p class="p2"><span class="s5"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;</span><span class="s4">meta</span><span class="s5"> </span><span class="s2">name</span><span class="s3">=</span><span class="s1">"viewport"</span><span class="s5"> </span><span class="s2">content</span><span class="s3">=</span><span class="s1">"width=device-width, initial-scale=1.0"</span><span class="s3">&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;</span><span class="s4">title</span><span class="s3">&gt;</span><span class="s1">AI 虛擬試身室</span><span class="s3">&lt;/</span><span class="s4">title</span><span class="s3">&gt;</span></p>
-<p class="p2"><span class="s5"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;</span><span class="s4">script</span><span class="s5"> </span><span class="s2">src</span><span class="s3">=</span><span class="s1">"https://cdn.tailwindcss.com"</span><span class="s3">&gt;&lt;/</span><span class="s4">script</span><span class="s3">&gt;</span></p>
-<p class="p2"><span class="s5"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;</span><span class="s4">link</span><span class="s5"> </span><span class="s2">href</span><span class="s3">=</span><span class="s1">"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"</span><span class="s5"> </span><span class="s2">rel</span><span class="s3">=</span><span class="s1">"stylesheet"</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s5"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;</span><span class="s1">style</span><span class="s3">&gt;</span></p>
-<p class="p6"><span class="s5"><span class="Apple-converted-space">        </span></span><span class="s1">/* 自訂上傳區塊的虛線樣式 */</span></p>
-<p class="p3"><span class="s5"><span class="Apple-converted-space">        </span></span><span class="s1">.upload-zone</span><span class="s5"> {</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">border:</span><span class="s1"> </span><span class="s7">2px</span><span class="s1"> </span><span class="s8">dashed</span><span class="s1"> </span><span class="s8">#cbd5e1</span><span class="s1">;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">transition:</span><span class="s1"> </span><span class="s8">all</span><span class="s1"> </span><span class="s7">0.3s</span><span class="s1"> </span><span class="s8">ease</span><span class="s1">;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p3"><span class="s5"><span class="Apple-converted-space">        </span></span><span class="s1">.upload-zone:hover</span><span class="s5"> {</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">border-color:</span><span class="s1"> </span><span class="s8">#3b82f6</span><span class="s1">;</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">            </span></span><span class="s1">background-color:</span><span class="s5"> </span><span class="s8">#eff6ff</span><span class="s5">;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s4">.loader</span><span class="s1"> {</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">border:</span><span class="s1"> </span><span class="s7">4px</span><span class="s1"> </span><span class="s8">solid</span><span class="s1"> </span><span class="s8">#f3f3f3</span><span class="s1">;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">border-top:</span><span class="s1"> </span><span class="s7">4px</span><span class="s1"> </span><span class="s8">solid</span><span class="s1"> </span><span class="s8">#3b82f6</span><span class="s1">;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">border-radius:</span><span class="s1"> </span><span class="s7">50%</span><span class="s1">;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">width:</span><span class="s1"> </span><span class="s7">40px</span><span class="s1">;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">height:</span><span class="s1"> </span><span class="s7">40px</span><span class="s1">;</span></p>
-<p class="p7"><span class="s5"><span class="Apple-converted-space">            </span></span><span class="s2">animation:</span><span class="s5"> </span><span class="s1">spin</span><span class="s5"> </span><span class="s7">1s</span><span class="s5"> </span><span class="s1">linear</span><span class="s5"> </span><span class="s1">infinite</span><span class="s5">;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">margin:</span><span class="s1"> </span><span class="s7">0</span><span class="s1"> </span><span class="s8">auto</span><span class="s1">;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s9">@keyframes</span><span class="s1"> </span><span class="s8">spin</span><span class="s1"> {</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s7">0%</span><span class="s1"> { </span><span class="s2">transform:</span><span class="s1"> </span><span class="s8">rotate(</span><span class="s7">0deg</span><span class="s8">)</span><span class="s1">; }</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s7">100%</span><span class="s1"> { </span><span class="s2">transform:</span><span class="s1"> </span><span class="s8">rotate(</span><span class="s7">360deg</span><span class="s8">)</span><span class="s1">; }</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p3"><span class="s5"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;/</span><span class="s1">style</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s3">&lt;/</span><span class="s1">head</span><span class="s3">&gt;</span></p>
-<p class="p2"><span class="s3">&lt;</span><span class="s4">body</span><span class="s5"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"bg-gray-50 min-h-screen text-gray-800"</span><span class="s3">&gt;</span></p>
-<p class="p8"><span class="s10"></span><br></p>
-<p class="p6"><span class="s5"><span class="Apple-converted-space">    </span></span><span class="s1">&lt;!-- 頂部導航列 --&gt;</span></p>
-<p class="p2"><span class="s5"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;</span><span class="s4">header</span><span class="s5"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"bg-white shadow-sm sticky top-0 z-10"</span><span class="s3">&gt;</span></p>
-<p class="p2"><span class="s5"><span class="Apple-converted-space">        </span></span><span class="s3">&lt;</span><span class="s4">div</span><span class="s5"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"max-w-5xl mx-auto px-4 py-4 flex justify-between items-center"</span><span class="s3">&gt;</span></p>
-<p class="p2"><span class="s5"><span class="Apple-converted-space">            </span></span><span class="s3">&lt;</span><span class="s4">h1</span><span class="s5"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"text-2xl font-bold text-blue-600"</span><span class="s3">&gt;&lt;</span><span class="s4">i</span><span class="s5"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"fa-solid fa-wand-magic-sparkles mr-2"</span><span class="s3">&gt;&lt;/</span><span class="s4">i</span><span class="s3">&gt;</span><span class="s5">AI 虛擬試身室</span><span class="s3">&lt;/</span><span class="s4">h1</span><span class="s3">&gt;</span></p>
-<p class="p2"><span class="s5"><span class="Apple-converted-space">            </span></span><span class="s3">&lt;</span><span class="s4">button</span><span class="s5"> </span><span class="s2">onclick</span><span class="s3">=</span><span class="s1">"resetApp()"</span><span class="s5"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"text-sm text-gray-500 hover:text-blue-600 font-medium"</span><span class="s3">&gt;</span></p>
-<p class="p2"><span class="s5"><span class="Apple-converted-space">                </span></span><span class="s3">&lt;</span><span class="s4">i</span><span class="s5"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"fa-solid fa-rotate-right mr-1"</span><span class="s3">&gt;&lt;/</span><span class="s4">i</span><span class="s3">&gt;</span><span class="s5">重設</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s3">&lt;/</span><span class="s4">button</span><span class="s3">&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s3">&lt;/</span><span class="s4">div</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s5"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;/</span><span class="s1">header</span><span class="s3">&gt;</span></p>
-<p class="p8"><span class="s10"></span><br></p>
-<p class="p6"><span class="s5"><span class="Apple-converted-space">    </span></span><span class="s1">&lt;!-- 主要內容區 --&gt;</span></p>
-<p class="p2"><span class="s5"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;</span><span class="s4">main</span><span class="s5"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"max-w-5xl mx-auto px-4 py-8"</span><span class="s3">&gt;</span></p>
-<p class="p2"><span class="s5"><span class="Apple-converted-space">        </span></span><span class="s3">&lt;</span><span class="s4">div</span><span class="s5"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"bg-white rounded-2xl shadow-xl overflow-hidden"</span><span class="s3">&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s3">&lt;</span><span class="s4">div</span><span class="s1"> </span><span class="s2">class</span><span class="s3">=</span><span class="s6">"p-6 md:p-8"</span><span class="s3">&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s3">&lt;</span><span class="s4">p</span><span class="s1"> </span><span class="s2">class</span><span class="s3">=</span><span class="s6">"text-gray-600 mb-8 text-center"</span><span class="s3">&gt;</span><span class="s1">上傳一張你嘅正面相，再上傳一張你想試嘅衣服相，AI 就會幫你自動換裝！</span><span class="s3">&lt;/</span><span class="s4">p</span><span class="s3">&gt;</span></p>
-<p class="p8"><span class="s10"></span><br></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s11">&lt;!-- 圖片上傳區域 --&gt;</span></p>
-<p class="p2"><span class="s5"><span class="Apple-converted-space">                </span></span><span class="s3">&lt;</span><span class="s4">div</span><span class="s5"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"grid grid-cols-1 md:grid-cols-2 gap-6 mb-8"</span><span class="s3">&gt;</span></p>
-<p class="p8"><span class="s1"><span class="Apple-converted-space">                    </span></span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span></span><span class="s11">&lt;!-- 人物照片上傳 --&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span></span><span class="s3">&lt;</span><span class="s4">div</span><span class="s1"> </span><span class="s2">class</span><span class="s3">=</span><span class="s6">"flex flex-col"</span><span class="s3">&gt;</span></p>
-<p class="p2"><span class="s5"><span class="Apple-converted-space">                        </span></span><span class="s3">&lt;</span><span class="s4">label</span><span class="s5"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"font-semibold text-gray-700 mb-2"</span><span class="s3">&gt;&lt;</span><span class="s4">i</span><span class="s5"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"fa-solid fa-user mr-2 text-blue-500"</span><span class="s3">&gt;&lt;/</span><span class="s4">i</span><span class="s3">&gt;</span><span class="s5">1. 上傳人物照片</span><span class="s3">&lt;/</span><span class="s4">label</span><span class="s3">&gt;</span></p>
-<p class="p2"><span class="s5"><span class="Apple-converted-space">                        </span></span><span class="s3">&lt;</span><span class="s4">div</span><span class="s5"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"upload-zone rounded-xl h-64 flex flex-col items-center justify-center relative cursor-pointer"</span><span class="s5"> </span><span class="s2">onclick</span><span class="s3">=</span><span class="s1">"document.getElementById('personInput').click()"</span><span class="s3">&gt;</span></p>
-<p class="p2"><span class="s5"><span class="Apple-converted-space">                            </span></span><span class="s3">&lt;</span><span class="s4">input</span><span class="s5"> </span><span class="s2">type</span><span class="s3">=</span><span class="s1">"file"</span><span class="s5"> </span><span class="s2">id</span><span class="s3">=</span><span class="s1">"personInput"</span><span class="s5"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"hidden"</span><span class="s5"> </span><span class="s2">accept</span><span class="s3">=</span><span class="s1">"image/*"</span><span class="s5"> </span><span class="s2">onchange</span><span class="s3">=</span><span class="s1">"previewImage(event, 'personPreview', 'personPlaceholder')"</span><span class="s3">&gt;</span></p>
-<p class="p8"><span class="s1"><span class="Apple-converted-space">                            </span></span></p>
-<p class="p2"><span class="s5"><span class="Apple-converted-space">                            </span></span><span class="s3">&lt;</span><span class="s4">div</span><span class="s5"> </span><span class="s2">id</span><span class="s3">=</span><span class="s1">"personPlaceholder"</span><span class="s5"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"text-center p-4"</span><span class="s3">&gt;</span></p>
-<p class="p2"><span class="s5"><span class="Apple-converted-space">                                </span></span><span class="s3">&lt;</span><span class="s4">i</span><span class="s5"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"fa-solid fa-cloud-arrow-up text-4xl text-gray-400 mb-3"</span><span class="s3">&gt;&lt;/</span><span class="s4">i</span><span class="s3">&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                                </span></span><span class="s3">&lt;</span><span class="s4">p</span><span class="s1"> </span><span class="s2">class</span><span class="s3">=</span><span class="s6">"text-gray-500 text-sm"</span><span class="s3">&gt;</span><span class="s1">點擊上傳或拖曳圖片至此</span><span class="s3">&lt;/</span><span class="s4">p</span><span class="s3">&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                                </span></span><span class="s3">&lt;</span><span class="s4">p</span><span class="s1"> </span><span class="s2">class</span><span class="s3">=</span><span class="s6">"text-xs text-gray-400 mt-1"</span><span class="s3">&gt;</span><span class="s1">建議使用清晰正面照</span><span class="s3">&lt;/</span><span class="s4">p</span><span class="s3">&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                            </span></span><span class="s3">&lt;/</span><span class="s4">div</span><span class="s3">&gt;</span></p>
-<p class="p8"><span class="s1"><span class="Apple-converted-space">                            </span></span></p>
-<p class="p2"><span class="s5"><span class="Apple-converted-space">                            </span></span><span class="s3">&lt;</span><span class="s4">img</span><span class="s5"> </span><span class="s2">id</span><span class="s3">=</span><span class="s1">"personPreview"</span><span class="s5"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"hidden absolute inset-0 w-full h-full object-cover rounded-xl"</span><span class="s5"> </span><span class="s2">alt</span><span class="s3">=</span><span class="s1">"人物預覽"</span><span class="s3">&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span></span><span class="s3">&lt;/</span><span class="s4">div</span><span class="s3">&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span></span><span class="s3">&lt;/</span><span class="s4">div</span><span class="s3">&gt;</span></p>
-<p class="p8"><span class="s10"></span><br></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span></span><span class="s11">&lt;!-- 衣服照片上傳 --&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span></span><span class="s3">&lt;</span><span class="s4">div</span><span class="s1"> </span><span class="s2">class</span><span class="s3">=</span><span class="s6">"flex flex-col"</span><span class="s3">&gt;</span></p>
-<p class="p2"><span class="s5"><span class="Apple-converted-space">                        </span></span><span class="s3">&lt;</span><span class="s4">label</span><span class="s5"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"font-semibold text-gray-700 mb-2"</span><span class="s3">&gt;&lt;</span><span class="s4">i</span><span class="s5"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"fa-solid fa-shirt mr-2 text-blue-500"</span><span class="s3">&gt;&lt;/</span><span class="s4">i</span><span class="s3">&gt;</span><span class="s5">2. 上傳衣服照片</span><span class="s3">&lt;/</span><span class="s4">label</span><span class="s3">&gt;</span></p>
-<p class="p2"><span class="s5"><span class="Apple-converted-space">                        </span></span><span class="s3">&lt;</span><span class="s4">div</span><span class="s5"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"upload-zone rounded-xl h-64 flex flex-col items-center justify-center relative cursor-pointer"</span><span class="s5"> </span><span class="s2">onclick</span><span class="s3">=</span><span class="s1">"document.getElementById('clothingInput').click()"</span><span class="s3">&gt;</span></p>
-<p class="p2"><span class="s5"><span class="Apple-converted-space">                            </span></span><span class="s3">&lt;</span><span class="s4">input</span><span class="s5"> </span><span class="s2">type</span><span class="s3">=</span><span class="s1">"file"</span><span class="s5"> </span><span class="s2">id</span><span class="s3">=</span><span class="s1">"clothingInput"</span><span class="s5"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"hidden"</span><span class="s5"> </span><span class="s2">accept</span><span class="s3">=</span><span class="s1">"image/*"</span><span class="s5"> </span><span class="s2">onchange</span><span class="s3">=</span><span class="s1">"previewImage(event, 'clothingPreview', 'clothingPlaceholder')"</span><span class="s3">&gt;</span></p>
-<p class="p8"><span class="s1"><span class="Apple-converted-space">                            </span></span></p>
-<p class="p2"><span class="s5"><span class="Apple-converted-space">                            </span></span><span class="s3">&lt;</span><span class="s4">div</span><span class="s5"> </span><span class="s2">id</span><span class="s3">=</span><span class="s1">"clothingPlaceholder"</span><span class="s5"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"text-center p-4"</span><span class="s3">&gt;</span></p>
-<p class="p2"><span class="s5"><span class="Apple-converted-space">                                </span></span><span class="s3">&lt;</span><span class="s4">i</span><span class="s5"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"fa-solid fa-cloud-arrow-up text-4xl text-gray-400 mb-3"</span><span class="s3">&gt;&lt;/</span><span class="s4">i</span><span class="s3">&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                                </span></span><span class="s3">&lt;</span><span class="s4">p</span><span class="s1"> </span><span class="s2">class</span><span class="s3">=</span><span class="s6">"text-gray-500 text-sm"</span><span class="s3">&gt;</span><span class="s1">點擊上傳衣服圖片</span><span class="s3">&lt;/</span><span class="s4">p</span><span class="s3">&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                                </span></span><span class="s3">&lt;</span><span class="s4">p</span><span class="s1"> </span><span class="s2">class</span><span class="s3">=</span><span class="s6">"text-xs text-gray-400 mt-1"</span><span class="s3">&gt;</span><span class="s1">建議使用平鋪衣服照</span><span class="s3">&lt;/</span><span class="s4">p</span><span class="s3">&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                            </span></span><span class="s3">&lt;/</span><span class="s4">div</span><span class="s3">&gt;</span></p>
-<p class="p8"><span class="s1"><span class="Apple-converted-space">                            </span></span></p>
-<p class="p2"><span class="s5"><span class="Apple-converted-space">                            </span></span><span class="s3">&lt;</span><span class="s4">img</span><span class="s5"> </span><span class="s2">id</span><span class="s3">=</span><span class="s1">"clothingPreview"</span><span class="s5"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"hidden absolute inset-0 w-full h-full object-contain bg-gray-100 rounded-xl"</span><span class="s5"> </span><span class="s2">alt</span><span class="s3">=</span><span class="s1">"衣服預覽"</span><span class="s3">&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span></span><span class="s3">&lt;/</span><span class="s4">div</span><span class="s3">&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span></span><span class="s3">&lt;/</span><span class="s4">div</span><span class="s3">&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s3">&lt;/</span><span class="s4">div</span><span class="s3">&gt;</span></p>
-<p class="p8"><span class="s10"></span><br></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s11">&lt;!-- 生成按鈕 --&gt;</span></p>
-<p class="p2"><span class="s5"><span class="Apple-converted-space">                </span></span><span class="s3">&lt;</span><span class="s4">div</span><span class="s5"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"flex justify-center mb-8"</span><span class="s3">&gt;</span></p>
-<p class="p2"><span class="s5"><span class="Apple-converted-space">                    </span></span><span class="s3">&lt;</span><span class="s4">button</span><span class="s5"> </span><span class="s2">id</span><span class="s3">=</span><span class="s1">"generateBtn"</span><span class="s5"> </span><span class="s2">onclick</span><span class="s3">=</span><span class="s1">"generateTryOn()"</span><span class="s5"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-10 rounded-full shadow-lg transform transition hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed text-lg"</span><span class="s3">&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span></span><span class="s3">&lt;</span><span class="s4">i</span><span class="s1"> </span><span class="s2">class</span><span class="s3">=</span><span class="s6">"fa-solid fa-wand-magic mr-2"</span><span class="s3">&gt;&lt;/</span><span class="s4">i</span><span class="s3">&gt;</span><span class="s1">立即 AI 換裝</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span></span><span class="s3">&lt;/</span><span class="s4">button</span><span class="s3">&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s3">&lt;/</span><span class="s4">div</span><span class="s3">&gt;</span></p>
-<p class="p8"><span class="s10"></span><br></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s11">&lt;!-- 結果顯示區 --&gt;</span></p>
-<p class="p2"><span class="s5"><span class="Apple-converted-space">                </span></span><span class="s3">&lt;</span><span class="s4">div</span><span class="s5"> </span><span class="s2">id</span><span class="s3">=</span><span class="s1">"resultSection"</span><span class="s5"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"hidden flex-col items-center border-t border-gray-100 pt-8 mt-4"</span><span class="s3">&gt;</span></p>
-<p class="p2"><span class="s5"><span class="Apple-converted-space">                    </span></span><span class="s3">&lt;</span><span class="s4">h2</span><span class="s5"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"text-xl font-bold text-gray-800 mb-4"</span><span class="s3">&gt;</span><span class="s5">✨ 生成結果 ✨</span><span class="s3">&lt;/</span><span class="s4">h2</span><span class="s3">&gt;</span></p>
-<p class="p8"><span class="s1"><span class="Apple-converted-space">                    </span></span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span></span><span class="s11">&lt;!-- 載入中動畫 --&gt;</span></p>
-<p class="p2"><span class="s5"><span class="Apple-converted-space">                    </span></span><span class="s3">&lt;</span><span class="s4">div</span><span class="s5"> </span><span class="s2">id</span><span class="s3">=</span><span class="s1">"loadingState"</span><span class="s5"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"hidden flex-col items-center py-10"</span><span class="s3">&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span></span><span class="s3">&lt;</span><span class="s4">div</span><span class="s1"> </span><span class="s2">class</span><span class="s3">=</span><span class="s6">"loader mb-4"</span><span class="s3">&gt;&lt;/</span><span class="s4">div</span><span class="s3">&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span></span><span class="s3">&lt;</span><span class="s4">p</span><span class="s1"> </span><span class="s2">class</span><span class="s3">=</span><span class="s6">"text-blue-600 font-medium"</span><span class="s3">&gt;</span><span class="s1">AI 正在為你進行精準換裝，請稍候...</span><span class="s3">&lt;/</span><span class="s4">p</span><span class="s3">&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span></span><span class="s3">&lt;</span><span class="s4">p</span><span class="s1"> </span><span class="s2">class</span><span class="s3">=</span><span class="s6">"text-xs text-gray-400 mt-2"</span><span class="s3">&gt;</span><span class="s1">（模擬進度：分析身型 ➔ 提取衣物 ➔ 融合光影）</span><span class="s3">&lt;/</span><span class="s4">p</span><span class="s3">&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span></span><span class="s3">&lt;/</span><span class="s4">div</span><span class="s3">&gt;</span></p>
-<p class="p8"><span class="s10"></span><br></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span></span><span class="s11">&lt;!-- 最終結果 --&gt;</span></p>
-<p class="p2"><span class="s5"><span class="Apple-converted-space">                    </span></span><span class="s3">&lt;</span><span class="s4">div</span><span class="s5"> </span><span class="s2">id</span><span class="s3">=</span><span class="s1">"finalResult"</span><span class="s5"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"hidden w-full max-w-md"</span><span class="s3">&gt;</span></p>
-<p class="p2"><span class="s5"><span class="Apple-converted-space">                        </span></span><span class="s3">&lt;</span><span class="s4">div</span><span class="s5"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"relative rounded-xl overflow-hidden shadow-2xl bg-gray-100 h-96 flex items-center justify-center"</span><span class="s3">&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                            </span></span><span class="s11">&lt;!-- 這裡用 Canvas 模擬合成結果 --&gt;</span></p>
-<p class="p2"><span class="s5"><span class="Apple-converted-space">                            </span></span><span class="s3">&lt;</span><span class="s4">canvas</span><span class="s5"> </span><span class="s2">id</span><span class="s3">=</span><span class="s1">"resultCanvas"</span><span class="s5"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"w-full h-full object-cover"</span><span class="s3">&gt;&lt;/</span><span class="s4">canvas</span><span class="s3">&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span></span><span class="s3">&lt;/</span><span class="s4">div</span><span class="s3">&gt;</span></p>
-<p class="p2"><span class="s5"><span class="Apple-converted-space">                        </span></span><span class="s3">&lt;</span><span class="s4">div</span><span class="s5"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"flex justify-center gap-4 mt-6"</span><span class="s3">&gt;</span></p>
-<p class="p2"><span class="s5"><span class="Apple-converted-space">                            </span></span><span class="s3">&lt;</span><span class="s4">button</span><span class="s5"> </span><span class="s2">onclick</span><span class="s3">=</span><span class="s1">"downloadResult()"</span><span class="s5"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"bg-gray-800 hover:bg-gray-900 text-white py-2 px-6 rounded-lg shadow transition"</span><span class="s3">&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                                </span></span><span class="s3">&lt;</span><span class="s4">i</span><span class="s1"> </span><span class="s2">class</span><span class="s3">=</span><span class="s6">"fa-solid fa-download mr-2"</span><span class="s3">&gt;&lt;/</span><span class="s4">i</span><span class="s3">&gt;</span><span class="s1">儲存圖片</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                            </span></span><span class="s3">&lt;/</span><span class="s4">button</span><span class="s3">&gt;</span></p>
-<p class="p2"><span class="s5"><span class="Apple-converted-space">                            </span></span><span class="s3">&lt;</span><span class="s4">button</span><span class="s5"> </span><span class="s2">onclick</span><span class="s3">=</span><span class="s1">"shareResult()"</span><span class="s5"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"border border-gray-300 hover:bg-gray-50 text-gray-700 py-2 px-6 rounded-lg shadow-sm transition"</span><span class="s3">&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                                </span></span><span class="s3">&lt;</span><span class="s4">i</span><span class="s1"> </span><span class="s2">class</span><span class="s3">=</span><span class="s6">"fa-solid fa-share-nodes mr-2"</span><span class="s3">&gt;&lt;/</span><span class="s4">i</span><span class="s3">&gt;</span><span class="s1">分享</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                            </span></span><span class="s3">&lt;/</span><span class="s4">button</span><span class="s3">&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span></span><span class="s3">&lt;/</span><span class="s4">div</span><span class="s3">&gt;</span></p>
-<p class="p8"><span class="s1"><span class="Apple-converted-space">                        </span></span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span></span><span class="s11">&lt;!-- 系統提示 --&gt;</span></p>
-<p class="p2"><span class="s5"><span class="Apple-converted-space">                        </span></span><span class="s3">&lt;</span><span class="s4">div</span><span class="s5"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"mt-6 p-4 bg-blue-50 text-blue-800 text-sm rounded-lg border border-blue-100"</span><span class="s3">&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                            </span></span><span class="s3">&lt;</span><span class="s4">strong</span><span class="s3">&gt;</span><span class="s1">💡 開發者提示：</span><span class="s3">&lt;/</span><span class="s4">strong</span><span class="s3">&gt;</span><span class="s1"> 這是一個前端 UI 介面。如果要達到完美的商業級 AI 換裝效果，需要將此網頁連接到後端的 AI API（例如 VTON, Replicate 等）。目前的預覽為模擬合成效果！</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span></span><span class="s3">&lt;/</span><span class="s4">div</span><span class="s3">&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span></span><span class="s3">&lt;/</span><span class="s4">div</span><span class="s3">&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s3">&lt;/</span><span class="s4">div</span><span class="s3">&gt;</span></p>
-<p class="p8"><span class="s10"></span><br></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s3">&lt;/</span><span class="s4">div</span><span class="s3">&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s3">&lt;/</span><span class="s4">div</span><span class="s3">&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;/</span><span class="s4">main</span><span class="s3">&gt;</span></p>
-<p class="p8"><span class="s10"></span><br></p>
-<p class="p3"><span class="s5"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;</span><span class="s1">script</span><span class="s3">&gt;</span></p>
-<p class="p6"><span class="s5"><span class="Apple-converted-space">        </span></span><span class="s1">// 處理圖片預覽</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s9">function</span><span class="s1"> previewImage(event, previewId, placeholderId) {</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s9">const</span><span class="s1"> input = event.target;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s9">const</span><span class="s1"> preview = document.getElementById(previewId);</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s9">const</span><span class="s1"> placeholder = document.getElementById(placeholderId);</span></p>
-<p class="p8"><span class="s10"></span><br></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s9">if</span><span class="s1"> (input.files &amp;&amp; input.files[</span><span class="s12">0</span><span class="s1">]) {</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s9">const</span><span class="s1"> reader = </span><span class="s9">new</span><span class="s1"> </span><span class="s13">FileReader</span><span class="s1">();</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>reader.onload = </span><span class="s9">function</span><span class="s1">(e) {</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>preview.src = e.target.result;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>preview.classList.remove(</span><span class="s14">'hidden'</span><span class="s1">);</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>placeholder.classList.add(</span><span class="s14">'hidden'</span><span class="s1">);</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>}</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>reader.readAsDataURL(input.files[</span><span class="s12">0</span><span class="s1">]);</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>}</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p8"><span class="s10"></span><br></p>
-<p class="p6"><span class="s5"><span class="Apple-converted-space">        </span></span><span class="s1">// 模擬生成過程</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s9">function</span><span class="s1"> generateTryOn() {</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s9">const</span><span class="s1"> personImg = document.getElementById(</span><span class="s14">'personPreview'</span><span class="s1">).src;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s9">const</span><span class="s1"> clothingImg = document.getElementById(</span><span class="s14">'clothingPreview'</span><span class="s1">).src;</span></p>
-<p class="p8"><span class="s10"></span><br></p>
-<p class="p6"><span class="s5"><span class="Apple-converted-space">            </span></span><span class="s1">// 檢查是否兩張圖都已上傳</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s9">if</span><span class="s1"> (!personImg || personImg === window.location.href ||<span class="Apple-converted-space"> </span></span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>!clothingImg || clothingImg === window.location.href) {</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>alert(</span><span class="s14">"請先上傳人物及衣服照片！"</span><span class="s1">);</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s9">return</span><span class="s1">;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>}</span></p>
-<p class="p8"><span class="s10"></span><br></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s9">const</span><span class="s1"> btn = document.getElementById(</span><span class="s14">'generateBtn'</span><span class="s1">);</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s9">const</span><span class="s1"> resultSection = document.getElementById(</span><span class="s14">'resultSection'</span><span class="s1">);</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s9">const</span><span class="s1"> loadingState = document.getElementById(</span><span class="s14">'loadingState'</span><span class="s1">);</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s9">const</span><span class="s1"> finalResult = document.getElementById(</span><span class="s14">'finalResult'</span><span class="s1">);</span></p>
-<p class="p8"><span class="s10"></span><br></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s11">// 顯示載入狀態</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>btn.disabled = </span><span class="s9">true</span><span class="s1">;</span></p>
-<p class="p9"><span class="s5"><span class="Apple-converted-space">            </span>btn.innerHTML = </span><span class="s1">'&lt;i class="fa-solid fa-spinner fa-spin mr-2"&gt;&lt;/i&gt;處理中...'</span><span class="s5">;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>resultSection.classList.remove(</span><span class="s14">'hidden'</span><span class="s1">);</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>resultSection.classList.add(</span><span class="s14">'flex'</span><span class="s1">);</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>loadingState.classList.remove(</span><span class="s14">'hidden'</span><span class="s1">);</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>loadingState.classList.add(</span><span class="s14">'flex'</span><span class="s1">);</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>finalResult.classList.add(</span><span class="s14">'hidden'</span><span class="s1">);</span></p>
-<p class="p8"><span class="s10"></span><br></p>
-<p class="p6"><span class="s5"><span class="Apple-converted-space">            </span></span><span class="s1">// 模擬網絡延遲 (3秒後顯示結果)</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>setTimeout(() =&gt; {</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>loadingState.classList.add(</span><span class="s14">'hidden'</span><span class="s1">);</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>loadingState.classList.remove(</span><span class="s14">'flex'</span><span class="s1">);</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>finalResult.classList.remove(</span><span class="s14">'hidden'</span><span class="s1">);</span></p>
-<p class="p8"><span class="s1"><span class="Apple-converted-space">                </span></span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s11">// 恢復按鈕</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>btn.disabled = </span><span class="s9">false</span><span class="s1">;</span></p>
-<p class="p9"><span class="s5"><span class="Apple-converted-space">                </span>btn.innerHTML = </span><span class="s1">'&lt;i class="fa-solid fa-wand-magic mr-2"&gt;&lt;/i&gt;再次換裝'</span><span class="s5">;</span></p>
-<p class="p8"><span class="s10"></span><br></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s11">// 畫出模擬合成圖</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>drawMockup(personImg, clothingImg);</span></p>
-<p class="p8"><span class="s10"></span><br></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s11">// 捲動到結果區</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>resultSection.scrollIntoView({ behavior: </span><span class="s14">'smooth'</span><span class="s1"> });</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>}, </span><span class="s12">3000</span><span class="s1">);</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p8"><span class="s10"></span><br></p>
-<p class="p6"><span class="s5"><span class="Apple-converted-space">        </span></span><span class="s1">// 簡單的 Canvas 模擬合成 (將衣服疊加在人像上)</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s9">function</span><span class="s1"> drawMockup(personSrc, clothingSrc) {</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s9">const</span><span class="s1"> canvas = document.getElementById(</span><span class="s14">'resultCanvas'</span><span class="s1">);</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s9">const</span><span class="s1"> ctx = canvas.getContext(</span><span class="s14">'2d'</span><span class="s1">);</span></p>
-<p class="p8"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s9">const</span><span class="s1"> pImg = </span><span class="s9">new</span><span class="s1"> </span><span class="s13">Image</span><span class="s1">();</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s9">const</span><span class="s1"> cImg = </span><span class="s9">new</span><span class="s1"> </span><span class="s13">Image</span><span class="s1">();</span></p>
-<p class="p8"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>pImg.onload = () =&gt; {</span></p>
-<p class="p6"><span class="s5"><span class="Apple-converted-space">                </span></span><span class="s1">// 設定 canvas 大小與人物照片相同</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>canvas.width = pImg.width;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>canvas.height = pImg.height;</span></p>
-<p class="p8"><span class="s1"><span class="Apple-converted-space">                </span></span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s11">// 畫上人物</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>ctx.drawImage(pImg, </span><span class="s12">0</span><span class="s1">, </span><span class="s12">0</span><span class="s1">, canvas.width, canvas.height);</span></p>
-<p class="p8"><span class="s1"><span class="Apple-converted-space">                </span></span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>cImg.onload = () =&gt; {</span></p>
-<p class="p6"><span class="s5"><span class="Apple-converted-space">                    </span></span><span class="s1">// 模擬把衣服放在中間 (這只是一個非常簡化的視覺模擬)</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span></span><span class="s9">const</span><span class="s1"> cWidth = canvas.width * </span><span class="s12">0.6</span><span class="s1">; </span><span class="s11">// 衣服佔據寬度比例</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span></span><span class="s9">const</span><span class="s1"> cHeight = cImg.height * (cWidth / cImg.width);</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span></span><span class="s9">const</span><span class="s1"> x = (canvas.width - cWidth) / </span><span class="s12">2</span><span class="s1">;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span></span><span class="s9">const</span><span class="s1"> y = canvas.height * </span><span class="s12">0.25</span><span class="s1">; </span><span class="s11">// 大約放在胸前位置</span></p>
-<p class="p8"><span class="s1"><span class="Apple-converted-space">                    </span></span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span></span><span class="s11">// 加上一點透明度讓它看起來像合成</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>ctx.globalAlpha = </span><span class="s12">0.9</span><span class="s1">;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>ctx.drawImage(cImg, x, y, cWidth, cHeight);</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>ctx.globalAlpha = </span><span class="s12">1.0</span><span class="s1">;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>};</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>cImg.src = clothingSrc;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>};</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>pImg.src = personSrc;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p8"><span class="s10"></span><br></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s11">// 下載圖片</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s9">function</span><span class="s1"> downloadResult() {</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s9">const</span><span class="s1"> canvas = document.getElementById(</span><span class="s14">'resultCanvas'</span><span class="s1">);</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s9">const</span><span class="s1"> link = document.createElement(</span><span class="s14">'a'</span><span class="s1">);</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>link.download = </span><span class="s14">'ai-tryon-result.png'</span><span class="s1">;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>link.href = canvas.toDataURL(</span><span class="s14">'image/png'</span><span class="s1">);</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>link.click();</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p8"><span class="s10"></span><br></p>
-<p class="p6"><span class="s5"><span class="Apple-converted-space">        </span></span><span class="s1">// 重設 App</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s9">function</span><span class="s1"> resetApp() {</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>document.getElementById(</span><span class="s14">'personInput'</span><span class="s1">).value = </span><span class="s14">''</span><span class="s1">;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>document.getElementById(</span><span class="s14">'clothingInput'</span><span class="s1">).value = </span><span class="s14">''</span><span class="s1">;</span></p>
-<p class="p8"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>document.getElementById(</span><span class="s14">'personPreview'</span><span class="s1">).classList.add(</span><span class="s14">'hidden'</span><span class="s1">);</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>document.getElementById(</span><span class="s14">'personPreview'</span><span class="s1">).src = </span><span class="s14">''</span><span class="s1">;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>document.getElementById(</span><span class="s14">'personPlaceholder'</span><span class="s1">).classList.remove(</span><span class="s14">'hidden'</span><span class="s1">);</span></p>
-<p class="p8"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>document.getElementById(</span><span class="s14">'clothingPreview'</span><span class="s1">).classList.add(</span><span class="s14">'hidden'</span><span class="s1">);</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>document.getElementById(</span><span class="s14">'clothingPreview'</span><span class="s1">).src = </span><span class="s14">''</span><span class="s1">;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>document.getElementById(</span><span class="s14">'clothingPlaceholder'</span><span class="s1">).classList.remove(</span><span class="s14">'hidden'</span><span class="s1">);</span></p>
-<p class="p8"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>document.getElementById(</span><span class="s14">'resultSection'</span><span class="s1">).classList.add(</span><span class="s14">'hidden'</span><span class="s1">);</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>document.getElementById(</span><span class="s14">'resultSection'</span><span class="s1">).classList.remove(</span><span class="s14">'flex'</span><span class="s1">);</span></p>
-<p class="p8"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s9">const</span><span class="s1"> btn = document.getElementById(</span><span class="s14">'generateBtn'</span><span class="s1">);</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>btn.disabled = </span><span class="s9">false</span><span class="s1">;</span></p>
-<p class="p9"><span class="s5"><span class="Apple-converted-space">            </span>btn.innerHTML = </span><span class="s1">'&lt;i class="fa-solid fa-wand-magic mr-2"&gt;&lt;/i&gt;立即 AI 換裝'</span><span class="s5">;</span></p>
-<p class="p8"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>window.scrollTo({ top: </span><span class="s12">0</span><span class="s1">, behavior: </span><span class="s14">'smooth'</span><span class="s1"> });</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p8"><span class="s10"></span><br></p>
-<p class="p6"><span class="s5"><span class="Apple-converted-space">        </span></span><span class="s1">// 簡單分享功能</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s9">function</span><span class="s1"> shareResult() {</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s9">if</span><span class="s1"> (navigator.share) {</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>navigator.share({</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>title: </span><span class="s14">'我的 AI 換裝結果'</span><span class="s1">,</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>text: </span><span class="s14">'快啲嚟睇下我用 AI 虛擬試身室整嘅新造型！'</span><span class="s1">,</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>url: window.location.href,</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>}).</span><span class="s9">catch</span><span class="s1">(console.error);</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>} </span><span class="s9">else</span><span class="s1"> {</span></p>
-<p class="p9"><span class="s5"><span class="Apple-converted-space">                </span>alert(</span><span class="s1">'你嘅瀏覽器唔支援分享功能，請直接下載圖片分享啦！'</span><span class="s5">);</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>}</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p3"><span class="s5"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;/</span><span class="s1">script</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s3">&lt;/</span><span class="s1">body</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s3">&lt;/</span><span class="s1">html</span><span class="s3">&gt;</span></p>
+<body class="bg-gray-50 min-h-screen text-gray-800">
+
+    <!-- 頂部導航列 -->
+    <header class="bg-white shadow-sm sticky top-0 z-10">
+        <div class="max-w-5xl mx-auto px-4 py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-bold text-blue-600"><i class="fa-solid fa-wand-magic-sparkles mr-2"></i>AI 虛擬試身室</h1>
+            <button onclick="resetApp()" class="text-sm text-gray-500 hover:text-blue-600 font-medium">
+                <i class="fa-solid fa-rotate-right mr-1"></i>重設
+            </button>
+        </div>
+    </header>
+
+    <!-- 主要內容區 -->
+    <main class="max-w-5xl mx-auto px-4 py-8">
+        <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
+            <div class="p-6 md:p-8">
+                <p class="text-gray-600 mb-8 text-center">上傳一張你嘅正面相，再上傳一張你想試嘅衣服相，AI 就會幫你自動換裝！</p>
+
+                <!-- 圖片上傳區域 -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                    
+                    <!-- 人物照片上傳 -->
+                    <div class="flex flex-col">
+                        <label class="font-semibold text-gray-700 mb-2"><i class="fa-solid fa-user mr-2 text-blue-500"></i>1. 上傳人物照片</label>
+                        <div class="upload-zone rounded-xl h-64 flex flex-col items-center justify-center relative cursor-pointer" onclick="document.getElementById('personInput').click()">
+                            <input type="file" id="personInput" class="hidden" accept="image/*" onchange="previewImage(event, 'personPreview', 'personPlaceholder')">
+                            
+                            <div id="personPlaceholder" class="text-center p-4">
+                                <i class="fa-solid fa-cloud-arrow-up text-4xl text-gray-400 mb-3"></i>
+                                <p class="text-gray-500 text-sm">點擊上傳或拖曳圖片至此</p>
+                                <p class="text-xs text-gray-400 mt-1">建議使用清晰正面照</p>
+                            </div>
+                            
+                            <img id="personPreview" class="hidden absolute inset-0 w-full h-full object-cover rounded-xl" alt="人物預覽">
+                        </div>
+                    </div>
+
+                    <!-- 衣服照片上傳 -->
+                    <div class="flex flex-col">
+                        <label class="font-semibold text-gray-700 mb-2"><i class="fa-solid fa-shirt mr-2 text-blue-500"></i>2. 上傳衣服照片</label>
+                        <div class="upload-zone rounded-xl h-64 flex flex-col items-center justify-center relative cursor-pointer" onclick="document.getElementById('clothingInput').click()">
+                            <input type="file" id="clothingInput" class="hidden" accept="image/*" onchange="previewImage(event, 'clothingPreview', 'clothingPlaceholder')">
+                            
+                            <div id="clothingPlaceholder" class="text-center p-4">
+                                <i class="fa-solid fa-cloud-arrow-up text-4xl text-gray-400 mb-3"></i>
+                                <p class="text-gray-500 text-sm">點擊上傳衣服圖片</p>
+                                <p class="text-xs text-gray-400 mt-1">建議使用平鋪衣服照</p>
+                            </div>
+                            
+                            <img id="clothingPreview" class="hidden absolute inset-0 w-full h-full object-contain bg-gray-100 rounded-xl" alt="衣服預覽">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 生成按鈕 -->
+                <div class="flex justify-center mb-8">
+                    <button id="generateBtn" onclick="generateTryOn()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-10 rounded-full shadow-lg transform transition hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed text-lg">
+                        <i class="fa-solid fa-wand-magic mr-2"></i>立即 AI 換裝
+                    </button>
+                </div>
+
+                <!-- 結果顯示區 -->
+                <div id="resultSection" class="hidden flex-col items-center border-t border-gray-100 pt-8 mt-4">
+                    <h2 class="text-xl font-bold text-gray-800 mb-4">✨ 生成結果 ✨</h2>
+                    
+                    <!-- 載入中動畫 -->
+                    <div id="loadingState" class="hidden flex-col items-center py-10">
+                        <div class="loader mb-4"></div>
+                        <p class="text-blue-600 font-medium">AI 正在為你進行精準換裝，請稍候...</p>
+                        <p class="text-xs text-gray-400 mt-2">（模擬進度：分析身型 ➔ 提取衣物 ➔ 融合光影）</p>
+                    </div>
+
+                    <!-- 最終結果 -->
+                    <div id="finalResult" class="hidden w-full max-w-md">
+                        <div class="relative rounded-xl overflow-hidden shadow-2xl bg-gray-100 h-96 flex items-center justify-center">
+                            <!-- 這裡用 Canvas 模擬合成結果 -->
+                            <canvas id="resultCanvas" class="w-full h-full object-cover"></canvas>
+                        </div>
+                        <div class="flex justify-center gap-4 mt-6">
+                            <button onclick="downloadResult()" class="bg-gray-800 hover:bg-gray-900 text-white py-2 px-6 rounded-lg shadow transition">
+                                <i class="fa-solid fa-download mr-2"></i>儲存圖片
+                            </button>
+                            <button onclick="shareResult()" class="border border-gray-300 hover:bg-gray-50 text-gray-700 py-2 px-6 rounded-lg shadow-sm transition">
+                                <i class="fa-solid fa-share-nodes mr-2"></i>分享
+                            </button>
+                        </div>
+                        
+                        <!-- 系統提示 -->
+                        <div class="mt-6 p-4 bg-blue-50 text-blue-800 text-sm rounded-lg border border-blue-100">
+                            <strong>💡 開發者提示：</strong> 這是一個前端 UI 介面。如果要達到完美的商業級 AI 換裝效果，需要將此網頁連接到後端的 AI API（例如 VTON, Replicate 等）。目前的預覽為模擬合成效果！
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // 處理圖片預覽
+        function previewImage(event, previewId, placeholderId) {
+            const input = event.target;
+            const preview = document.getElementById(previewId);
+            const placeholder = document.getElementById(placeholderId);
+
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    preview.src = e.target.result;
+                    preview.classList.remove('hidden');
+                    placeholder.classList.add('hidden');
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        // 模擬生成過程
+        function generateTryOn() {
+            const personImg = document.getElementById('personPreview').src;
+            const clothingImg = document.getElementById('clothingPreview').src;
+
+            // 檢查是否兩張圖都已上傳
+            if (!personImg || personImg === window.location.href || 
+                !clothingImg || clothingImg === window.location.href) {
+                alert("請先上傳人物及衣服照片！");
+                return;
+            }
+
+            const btn = document.getElementById('generateBtn');
+            const resultSection = document.getElementById('resultSection');
+            const loadingState = document.getElementById('loadingState');
+            const finalResult = document.getElementById('finalResult');
+
+            // 顯示載入狀態
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin mr-2"></i>處理中...';
+            resultSection.classList.remove('hidden');
+            resultSection.classList.add('flex');
+            loadingState.classList.remove('hidden');
+            loadingState.classList.add('flex');
+            finalResult.classList.add('hidden');
+
+            // 模擬網絡延遲 (3秒後顯示結果)
+            setTimeout(() => {
+                loadingState.classList.add('hidden');
+                loadingState.classList.remove('flex');
+                finalResult.classList.remove('hidden');
+                
+                // 恢復按鈕
+                btn.disabled = false;
+                btn.innerHTML = '<i class="fa-solid fa-wand-magic mr-2"></i>再次換裝';
+
+                // 畫出模擬合成圖
+                drawMockup(personImg, clothingImg);
+
+                // 捲動到結果區
+                resultSection.scrollIntoView({ behavior: 'smooth' });
+            }, 3000);
+        }
+
+        // 簡單的 Canvas 模擬合成 (將衣服疊加在人像上)
+        function drawMockup(personSrc, clothingSrc) {
+            const canvas = document.getElementById('resultCanvas');
+            const ctx = canvas.getContext('2d');
+            
+            const pImg = new Image();
+            const cImg = new Image();
+            
+            pImg.onload = () => {
+                // 設定 canvas 大小與人物照片相同
+                canvas.width = pImg.width;
+                canvas.height = pImg.height;
+                
+                // 畫上人物
+                ctx.drawImage(pImg, 0, 0, canvas.width, canvas.height);
+                
+                cImg.onload = () => {
+                    // 模擬把衣服放在中間 (這只是一個非常簡化的視覺模擬)
+                    const cWidth = canvas.width * 0.6; // 衣服佔據寬度比例
+                    const cHeight = cImg.height * (cWidth / cImg.width);
+                    const x = (canvas.width - cWidth) / 2;
+                    const y = canvas.height * 0.25; // 大約放在胸前位置
+                    
+                    // 加上一點透明度讓它看起來像合成
+                    ctx.globalAlpha = 0.9;
+                    ctx.drawImage(cImg, x, y, cWidth, cHeight);
+                    ctx.globalAlpha = 1.0;
+                };
+                cImg.src = clothingSrc;
+            };
+            pImg.src = personSrc;
+        }
+
+        // 下載圖片
+        function downloadResult() {
+            const canvas = document.getElementById('resultCanvas');
+            const link = document.createElement('a');
+            link.download = 'ai-tryon-result.png';
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        }
+
+        // 重設 App
+        function resetApp() {
+            document.getElementById('personInput').value = '';
+            document.getElementById('clothingInput').value = '';
+            
+            document.getElementById('personPreview').classList.add('hidden');
+            document.getElementById('personPreview').src = '';
+            document.getElementById('personPlaceholder').classList.remove('hidden');
+            
+            document.getElementById('clothingPreview').classList.add('hidden');
+            document.getElementById('clothingPreview').src = '';
+            document.getElementById('clothingPlaceholder').classList.remove('hidden');
+            
+            document.getElementById('resultSection').classList.add('hidden');
+            document.getElementById('resultSection').classList.remove('flex');
+            
+            const btn = document.getElementById('generateBtn');
+            btn.disabled = false;
+            btn.innerHTML = '<i class="fa-solid fa-wand-magic mr-2"></i>立即 AI 換裝';
+            
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // 簡單分享功能
+        function shareResult() {
+            if (navigator.share) {
+                navigator.share({
+                    title: '我的 AI 換裝結果',
+                    text: '快啲嚟睇下我用 AI 虛擬試身室整嘅新造型！',
+                    url: window.location.href,
+                }).catch(console.error);
+            } else {
+                alert('你嘅瀏覽器唔支援分享功能，請直接下載圖片分享啦！');
+            }
+        }
+    </script>
 </body>
 </html>
