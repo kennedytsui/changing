@@ -184,7 +184,8 @@
 
         // 呼叫 Gemini AI 圖像生成模型
         async function fetchAIImage(personDataUrl, clothingDataUrl) {
-            const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-image-preview:generateContent?key=${apiKey}`;
+            // 【修復】將模型改為公開版本支援多模態生成的 gemini-2.5-flash
+            const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`;
             
             // 提取 Base64 資料與 MimeType
             const personBase64 = personDataUrl.split(',')[1];
@@ -319,7 +320,7 @@
             } catch (error) {
                 // 處理錯誤
                 console.error("生成失敗:", error);
-                errorMsg.innerText = `生成失敗: ${error.message} (可能原因：圖片過於複雜，請嘗試另一張照片)`;
+                errorMsg.innerText = `生成失敗: ${error.message} (請確保您的 API Key 正確且有效)`;
                 errorMsg.classList.remove('hidden');
                 
                 resultSection.classList.add('hidden');
